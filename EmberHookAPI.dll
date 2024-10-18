@@ -1,0 +1,52 @@
+
+
+local EmberHookAPI = {}
+
+-- Function to get the local player
+function EmberHookAPI:GetLocalPlayer()
+    return game.Players.LocalPlayer
+end
+
+
+function EmberHookAPI:SetPlayerHealth(health)
+    local player = self:GetLocalPlayer()
+    if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.Health = health
+        print("Player health set to " .. health)
+    else
+        warn("Failed to set player health.")
+    end
+end
+
+
+function EmberHookAPI:TeleportPlayer(position)
+    local player = self:GetLocalPlayer()
+    if player and player.Character then
+        player.Character:SetPrimaryPartCFrame(CFrame.new(position))
+        print("Player teleported to " .. tostring(position))
+    else
+        warn("Failed to teleport player.")
+    end
+end
+
+
+function EmberHookAPI:ExecuteScript(script)
+    local success, err = pcall(function()
+        loadstring(script)()
+    end)
+
+    if not success then
+        warn("Script execution failed: " .. err)
+    else
+        print("Script executed successfully!")
+    end
+end
+
+
+function EmberHookAPI:Log(message)
+    local logFile = io.open("C:\\Users\\EmberDev\\Documents\\EmberHook\\EmberHookLog.txt", "a")
+    logFile:write(os.date("%Y-%m-%d %H:%M:%S") .. " - " .. message .. "\n")
+    logFile:close()
+end
+
+return EmberHookAPI

@@ -1,0 +1,30 @@
+{
+    "version": "1.0.0",
+    "userSettings": {
+        "theme": "dark",
+        "fontSize": 14,
+        "autoUpdate": true,
+        "scriptExecution": {
+            "enableLogging": true,
+            "logFilePath": "C:\\Users\\EmberDev\\Documents\\EmberHook\\EmberHookLog.txt",
+            "scriptTimeout": 30
+        },
+        "hotkeys": {
+            "executeScript": "F5",
+            "toggleUI": "F2",
+            "reloadScripts": "F3"
+        }
+    },
+    "scriptSettings": {
+        "defaultScript": "C:\\Users\\EmberDev\\Documents\\EmberHook\\defaultScript.lua",
+        "maxExecutionTime": 60,
+        "scriptWhitelist": [
+            "script1.lua",
+            "script2.lua"
+        ]
+    },
+    "updates": {
+        "checkInterval": "daily",
+        "downloadPath": "C:\\Users\\EmberDev\\Downloads\\EmberHook\\updates\\"
+    }
+}

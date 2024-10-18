@@ -1,0 +1,38 @@
+function executeScript(script)
+    local success, err = pcall(function()
+        loadstring(script)()
+    end)
+
+    if not success then
+        warn("Script execution failed: " .. err)
+    else
+        print("Script executed successfully!")
+    end
+end
+
+
+local playerScript = [[
+    local player = game.Players.LocalPlayer
+    player.Character.Humanoid.Health = 100
+    player.Character.Humanoid.WalkSpeed = 50
+    print("Player properties modified!")
+]]
+
+function injectScript(script)
+    print("Injecting script...")
+    executeScript(script)
+end
+
+
+print("EmberHook initialized.")
+injectScript(playerScript)
+
+
+function logMessage(message)
+    local logFile = io.open("EmberHookLog.txt", "a")
+    logFile:write(os.date("%Y-%m-%d %H:%M:%S") .. " - " .. message .. "\n")
+    logFile:close()
+end
+
+
+logMessage("EmberHook executed with player modification script.")
